@@ -1,0 +1,58 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"VundleVim/Vundle.vim
+Plugin 'gmarik/Vundle.vim'
+Plugin 'dracula/vim'
+"PreInstalled Markdown Plugin
+Plugin 'plasticboy/vim-markdown'
+"After install NERDTree plugin
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'AutoComplPop'
+Plugin 'taglist-plus'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'isRuslan/vim-es6'
+
+call vundle#end()
+filetype plugin indent on
+
+set nu
+set autoindent
+set cindent
+set hlsearch
+set ts=4 sw=4
+set tabstop=4
+set shiftwidth=4
+set laststatus=2
+set showmatch
+set smartindent
+set smartcase
+set ruler
+set fileencodings=utf8
+
+"packadd! dracula
+syntax enable
+colorscheme dracula
+"highlight Normal ctermbg=black ctermfg=white
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+let g:JavaComplete_EnableDefaultMappings = 0
+
+"nmap <F3> :NERDTree<CR>
+nmap <F3> :NERDTreeToggle<CR>
+
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+nmap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
