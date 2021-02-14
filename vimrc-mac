@@ -11,27 +11,36 @@ Plugin 'dracula/vim'
 Plugin 'plasticboy/vim-markdown'
 "After install NERDTree plugin
 Plugin 'scrooloose/nerdtree'
+" 실행모드 전환시 영어로 변경
+Plugin 'anekos/felis-cat-igirisu-toast-express'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'nathanaelkane/vim-indent-guides'
+" 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'AutoComplPop'
-Plugin 'taglist-plus'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'isRuslan/vim-es6'
+"Plugin 'AutoComplPop'
+"Plugin 'taglist-plus'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'isRuslan/vim-es6'
+"Plugin 'mxw/vim-jsx'
+"Plugin 'bagrat/vim-buffet'
 
 call vundle#end()
 filetype plugin indent on
 
 set nu
-set autoindent
-set cindent
+set ai    "autoindent
 set hlsearch
 set ts=4 sw=4
 set tabstop=4
+set smartindent
+set expandtab
 set shiftwidth=4
 set laststatus=2
 set showmatch
-set smartindent
 set smartcase
 set ruler
 set fileencodings=utf8
@@ -40,14 +49,35 @@ set fileencodings=utf8
 syntax enable
 colorscheme dracula
 "highlight Normal ctermbg=black ctermfg=white
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+"set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-let g:JavaComplete_EnableDefaultMappings = 0
-
+" for NERDTree
 "nmap <F3> :NERDTree<CR>
 nmap <F3> :NERDTreeToggle<CR>
+
+
+" for indent guide
+let g:indentguides_spacechar = '|'
+let g:indentguides_tabchar = '^'
+let g:indent_guides_enable_on_vin_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+
+" for vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme = 'hybrid'
+let mapleader = ','
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+nnoremap <leader>q :bp<CR>
+nnoremap <leader>w :bn<CR>
+
+
+
+" for javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
@@ -56,3 +86,17 @@ imap <F5> <Plug>(JavaComplete-Imports-Add)
 imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+"let g:JavaComplete_EnableDefaultMappings = 0
+
+
+
+
+
+
+
+
+
+
+
+
